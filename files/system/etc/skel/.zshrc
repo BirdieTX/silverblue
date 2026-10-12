@@ -61,6 +61,7 @@ SAVEHIST=10000
 setopt appendhistory
 setopt SHARE_HISTORY
 setopt autocd
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # Allow Bash-style globbing
 unsetopt nomatch
