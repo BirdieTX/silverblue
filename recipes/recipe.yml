@@ -126,6 +126,7 @@ modules:
       - terminus-fonts-console
       - vim-default-editor
       - yazi
+      - yt-dlp
       - zsh
       - zsh-autocomplete
       - zsh-autosuggestions
