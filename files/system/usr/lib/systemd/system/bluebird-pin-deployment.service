@@ -1,0 +1,7 @@
+[Unit]
+Description=Pin the newest rollback deployment before it can be pruned.
+ConditionPathExists=/run/ostree-booted
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bluebird-pin-deployment.sh
