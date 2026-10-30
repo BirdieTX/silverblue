@@ -14,7 +14,7 @@ dnf5 config-manager setopt \
     copr:copr.fedorainfracloud.org:ublue-os:packages.name='Universal Blue' \
     fedora.name='Fedora Core' \
     fedora-cisco-openh264.name='Cisco OpenH264' \
-    fedora-multimedia.name='Fedora Multilib' \
+    fedora-multimedia.name='Fedora Multimedia' \
     terra.name='Fyra Labs Terra' \
     terra-mesa.name='Fyra Labs Mesa' \
     updates.name='Fedora Updates' \
