@@ -1,8 +1,8 @@
-# silverblue &nbsp; [![bluebuild build badge](https://github.com/birdietx/silverblue/actions/workflows/build.yml/badge.svg)](https://github.com/birdietx/silverblue/actions/workflows/build.yml)
+# Fedora Silverblue (BirdieTX) &nbsp; [![bluebuild build badge](https://github.com/birdietx/silverblue/actions/workflows/build.yml/badge.svg)](https://github.com/birdietx/silverblue/actions/workflows/build.yml)
 
-See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup instructions for setting up your own repository based on this template.
+## DO NOT USE THIS IMAGE
 
-After setup, it is recommended you update this README to describe your custom image.
+If you want to build a custom Fedora Silverblue image, you should read documentation from the [Fedora Atomic Desktops User Guide](https://docs.stg.fedoraproject.org/en-US/atomic-desktops/), [Universal Blue](https://universal-blue.org/), and [Blue Build](https://blue-build.org/). This image is subject to changes for the needs of end users and the maintainer at any given moment, and stability is not guarenteed.
 
 ## Installation
 
@@ -27,8 +27,6 @@ To rebase an existing atomic Fedora installation to the latest build:
   ```
   systemctl reboot
   ```
-
-The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
 
 ## ISO
 
