@@ -203,8 +203,8 @@ modules:
 
   - type: os-release
     properties:
-      PRETTY_NAME="Fedora Linux 44 (Silverblue)"
-      VERSION_CODENAME="Bluebird"
+      - PRETTY_NAME="Fedora Linux 44 (Silverblue)"
+      - VERSION_CODENAME="Bluebird"
 
   - type: initramfs
   - type: signing
