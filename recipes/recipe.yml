@@ -28,6 +28,30 @@ modules:
       packages:
       - terra-release-mesa
 
+  - type: dnf
+    repos:
+      disable:
+        - fedora-cdrtools
+        - fedora-cdrtools-source
+        - fedora-cdrtools-debug
+        - fedora-multimedia-source
+        - fedora-multimedia-debug
+        - fedora-nvidia
+        - fedora-nvidia-source
+        - fedora-nvidia-debug
+        - fedora-rar
+        - fedora-rar-source
+        - fedora-rar-debug
+        - fedora-spotify
+        - fedora-spotify-source
+        - fedora-spotify-debug
+        - fedora-steam
+        - fedora-steam-source
+        - fedora-steam-debug
+        - fedora-uld
+        - fedora-uld-source
+        - fedora-uld-debug
+
   - type: script
     scripts:
     - priority.sh
@@ -183,10 +207,7 @@ modules:
         - updates-archive
       copr:
         disable:
-          - ublue-os/bazzite
-          - ublue-os/bazzite-multilib
           - ublue-os/packages
-          - ublue-os/staging
 
   - type: gschema-overrides
     include:
