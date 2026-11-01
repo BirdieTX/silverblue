@@ -146,15 +146,65 @@ modules:
       - Logo Menu
       - Tiling Assistant
 
+  - type: systemd
+    system:
+      disable:
+        - NetworkManager-wait-online.service
+      enabled:
+        - bluebird-auto-update.timer
+        - grub-config.service
+      masked:
+        - bootc-fetch-apply-updates.timer
+        - rpm-ostreed-automatic.timer
+
+  - type: brew
+    auto-update: true
+    auto-upgrade: true
+    brew-analytics: false
+    update-interval: 7d
+    update-wait-after-boot: 10m
+    upgrade-interval: 7d
+    upgrade-wait-after-boot: 30m
+
   - type: script
     scripts:
-    - enable.sh
+    - gshell.sh
     - post.sh
+
+  - type: dnf
+    repos:
+      disable:
+        - fedora
+        - fedora-cisco-openh264
+        - fedora-multimedia
+        - terra
+        - terra-mesa
+        - updates
+        - updates-archive
+      copr:
+        disable:
+          - ublue-os/bazzite
+          - ublue-os/bazzite-multilib
+          - ublue-os/packages
+          - ublue-os/staging
+
+  - type: gschema-overrides
+    include:
+      - zz1-bluebird.gschema.override
+
+  - type: bling
+    install:
+      - dconf-update-service
 
   - type: files
     files:
       - source: post
         destination: /
+
+  - type: os-release
+    properties:
+      PRETTY_NAME="Fedora Linux 44 (Silverblue)"
+      VERSION_CODENAME="Bluebird"
 
   - type: initramfs
   - type: signing
