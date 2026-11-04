@@ -80,10 +80,6 @@ modules:
       - gnome-shell-extension-places-menu
       - gnome-shell-extension-window-list
 
-  - type: dnf
-    install:
-      packages:
-
 # CLI TOOLS
   - type: dnf
     install:
