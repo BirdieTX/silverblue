@@ -17,6 +17,7 @@ modules:
       - ublue-os/packages
       files:
       - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
+      - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
       nonfree: negativo17
     remove:
       packages:
@@ -81,87 +82,122 @@ modules:
   - type: dnf
     install:
       packages:
-      - alacritty
-      - arimo-nerd-fonts
-      - bibata-cursor-theme
-      - btop
-      - cargo
-      - cmatrix
-      - eza
-      - fastfetch
-      - fish
-      - gnome-rounded-blur
-      - gnome-shell-extension-appindicator
-      - gnome-shell-extension-blur-my-shell
-      - gnome-shell-extension-caffeine
-      - gnome-shell-extension-dash-to-dock
-      - gnome-shell-extension-gsconnect
-      - gnome-shell-extension-just-perfection
-      - google-arimo-fonts
-      - google-droid-fonts-all
-      - google-go-fonts
-      - google-noto-fonts-all
-      - google-noto-sans-hk-fonts
-      - google-noto-serif-cjk-fonts
-      - google-roboto-fonts
-      - google-roboto-mono-fonts
-      - google-roboto-slab-fonts
-      - google-rubik-fonts
-      - HandBrake-cli
-      - jetbrains-mono-fonts-all
-      - jetbrainsmono-nerd-fonts
-      - kf6-kirigami-addons
-      - material-icons-fonts
-      - papirus-icon-theme
-      - plasma-breeze
-      - qt5ct
-      - qt6ct
-      - rsms-inter-fonts
-      - rsms-inter-vf-fonts
-      - rust
-      - satty
       - setroubleshoot
-      - signal-cli
-      - starship
-      - terminus-fonts
-      - terminus-fonts-console
-      - vim-default-editor
-      - yazi
-      - yt-dlp
-      - zsh
-      - zsh-autocomplete
-      - zsh-autosuggestions
-      - zsh-html
-      - zsh-syntax-highlighting
+
+# CLI TOOLS
+  - type: dnf
+    install:
+      packages:
+        - btop
+        - cargo
+        - cmatrix
+        - eza
+        - fastfetch
+        - HandBrake-cli
+        - mc
+        - rust
+        - signal-cli
+        - vim-default-editor
+        - yazi
+        - yt-dlp
+
+# ENVIRONMENT
+  - type: dnf
+    install:
+      packages:
+        - bibata-cursor-theme
+        - kf6-kirigami-addons
+        - papirus-icon-theme
+        - plasma-breeze
+        - qt5ct
+        - qt6ct
+
+# FONTS
+  - type: dnf
+    install:
+      packages:
+        - arimo-nerd-fonts
+        - google-arimo-fonts
+        - google-droid-fonts-all
+        - google-go-fonts
+        - google-noto-fonts-all
+        - google-noto-sans-hk-fonts
+        - google-noto-serif-cjk-fonts
+        - google-roboto-fonts
+        - google-roboto-mono-fonts
+        - google-roboto-slab-fonts
+        - google-rubik-fonts
+        - jetbrains-mono-fonts-all
+        - jetbrainsmono-nerd-fonts
+        - material-icons-fonts
+        - rsms-inter-fonts
+        - rsms-inter-vf-fonts
+        - terminus-fonts
+        - terminus-fonts-console
+
+# GNOME EXTENSIONS (FROM DNF)
+  - type: dnf
+    install:
+      packages:
+        - gnome-rounded-blur
+        - gnome-shell-extension-appindicator
+        - gnome-shell-extension-blur-my-shell
+        - gnome-shell-extension-caffeine
+        - gnome-shell-extension-dash-to-dock
+        - gnome-shell-extension-gsconnect
+        - gnome-shell-extension-just-perfection
+
+# GUI APPLICATIONS
+  - type: dnf
+    install:
+      packages:
+        - baobab
+        - brave-browser
+        - decibels
+        - flatseal
+        - g4music
+        - gnome-calculator
+        - gnome-calendar
+        - gnome-characters
+        - gnome-clocks
+        - gnome-font-viewer
+        - gnome-logs
+        - gnome-texteditor
+        - gnome-weather
+        - libreoffice-base
+        - libreoffice-calc
+        - libreoffice-draw
+        - libreoffice-impress
+        - libreoffice-math
+        - libreoffice-writer
+        - loupe
+        - mission-center
+        - papers
+        - showtime
+        - simplescan
+        - snapshot
+
+# TERMINAL
+  - type: dnf
+    install:
+      packages:
+        - alacritty
+        - fish
+        - starship
+        - zsh
+        - zsh-autocomplete
+        - zsh-autosuggestions
+        - zsh-html
+        - zsh-syntax-highlighting
 
   - type: default-flatpaks
     configurations:
       - notify: false
         scope: system
         install:
-        - com.brave.Browser
-        - com.github.neithern.g4music
-        - com.github.tchx84.Flatseal
         - com.mattjakeman.ExtensionManager
         - com.saivert.pwvucontrol
         - com.vixalien.sticky
-        - io.missioncenter.MissionCenter
-        - org.gnome.baobab
-        - org.gnome.Calculator
-        - org.gnome.Calendar
-        - org.gnome.Characters
-        - org.gnome.clocks
-        - org.gnome.Decibels
-        - org.gnome.font-viewer
-        - org.gnome.Logs
-        - org.gnome.Loupe
-        - org.gnome.Papers
-        - org.gnome.Showtime
-        - org.gnome.SimpleScan
-        - org.gnome.Snapshot
-        - org.gnome.TextEditor
-        - org.gnome.Weather
-        - org.libreoffice.LibreOffice
 
   - type: gnome-extensions
     install:
@@ -198,6 +234,7 @@ modules:
   - type: dnf
     repos:
       disable:
+        - brave-browser
         - fedora
         - fedora-cisco-openh264
         - fedora-multimedia
