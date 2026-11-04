@@ -57,6 +57,7 @@ modules:
     scripts:
     - priority.sh
 
+# MESA
   - type: dnf
     replace:
     - from-repo: terra-mesa
@@ -82,7 +83,6 @@ modules:
   - type: dnf
     install:
       packages:
-      - setroubleshoot
 
 # CLI TOOLS
   - type: dnf
@@ -162,7 +162,7 @@ modules:
         - gnome-clocks
         - gnome-font-viewer
         - gnome-logs
-        - gnome-texteditor
+        - gnome-text-editor
         - gnome-weather
         - libreoffice-base
         - libreoffice-calc
@@ -173,6 +173,7 @@ modules:
         - loupe
         - mission-center
         - papers
+        - setroubleshoot
         - showtime
         - simplescan
         - snapshot
