@@ -175,7 +175,7 @@ modules:
         - papers
         - setroubleshoot
         - showtime
-        - simplescan
+        - simple-scan
         - snapshot
 
 # TERMINAL
