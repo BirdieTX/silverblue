@@ -92,7 +92,6 @@ modules:
         - kf6-kirigami-addons
         - papirus-icon-theme
         - plasma-breeze
-        - pulseaudio-utils
         - qt5ct
         - qt6ct
 
@@ -225,6 +224,7 @@ modules:
         - fedora
         - fedora-cisco-openh264
         - fedora-multimedia
+        - fedora-rar
         - terra
         - terra-mesa
         - updates
@@ -232,7 +232,6 @@ modules:
       copr:
         disable:
           - ublue-os/packages
-          - ublue-os/staging
 
   - type: gschema-overrides
     include:
