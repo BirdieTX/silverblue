@@ -1,8 +1,6 @@
 # Fedora Silverblue (BirdieTX) &nbsp; [![bluebuild build badge](https://github.com/birdietx/silverblue/actions/workflows/build.yml/badge.svg)](https://github.com/birdietx/silverblue/actions/workflows/build.yml)
 
-## DO NOT USE THIS IMAGE
-
-If you want to build a custom Fedora Silverblue image, you should read documentation from the [Fedora Atomic Desktops User Guide](https://docs.stg.fedoraproject.org/en-US/atomic-desktops/), [Universal Blue](https://universal-blue.org/), and [Blue Build](https://blue-build.org/). This image is subject to changes for the needs of end users and the maintainer at any given moment, and stability is not guarenteed.
+If you want to build a custom Fedora Silverblue image, you should read documentation from the [Fedora Atomic Desktops User Guide](https://docs.stg.fedoraproject.org/en-US/atomic-desktops/), [Universal Blue](https://universal-blue.org/), and [Blue Build](https://blue-build.org/). This image is subject to changes for the needs of end users and the maintainer at any given moment, and stability is not guaranteed.
 
 ## Installation
 

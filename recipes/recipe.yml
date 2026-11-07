@@ -19,15 +19,22 @@ modules:
       - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
       - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
       nonfree: negativo17
-    remove:
-      packages:
-      - firefox
-      - firefox-langpacks
-      - gnome-system-monitor
-      - nano-default-editor
     install:
       packages:
       - terra-release-mesa
+
+  - type: dnf
+    remove:
+      auto-remove: true
+      packages:
+        - firefox
+        - gnome-shell-extension-apps-menu
+        - gnome-shell-extension-background-logo
+        - gnome-shell-extension-common
+        - gnome-shell-extension-launch-new-instance
+        - gnome-shell-extension-places-menu
+        - gnome-shell-extension-window-list
+        - nano-default-editor
 
   - type: dnf
     repos:
@@ -40,7 +47,6 @@ modules:
         - fedora-nvidia
         - fedora-nvidia-source
         - fedora-nvidia-debug
-        - fedora-rar
         - fedora-rar-source
         - fedora-rar-debug
         - fedora-spotify
@@ -55,32 +61,11 @@ modules:
 
   - type: script
     scripts:
-    - priority.sh
+      - dnf.sh
+    snippets:
+      - "dnf5 upgrade --allow-vendor-change --assumeyes --refresh"
 
-# MESA
-  - type: dnf
-    replace:
-    - from-repo: terra-mesa
-      packages:
-      - mesa-dri-drivers
-      - mesa-filesystem
-      - mesa-libEGL
-      - mesa-libGL
-      - mesa-libgbm
-      - mesa-vulkan-drivers
-
-  - type: dnf
-    remove:
-      auto-remove: true
-      packages:
-      - gnome-shell-extension-apps-menu
-      - gnome-shell-extension-background-logo
-      - gnome-shell-extension-common
-      - gnome-shell-extension-launch-new-instance
-      - gnome-shell-extension-places-menu
-      - gnome-shell-extension-window-list
-
-# CLI TOOLS
+  # CLI TOOLS
   - type: dnf
     install:
       packages:
@@ -91,13 +76,15 @@ modules:
         - fastfetch
         - HandBrake-cli
         - mc
+        - nano
+        - rar
         - rust
         - signal-cli
         - vim-default-editor
         - yazi
         - yt-dlp
 
-# ENVIRONMENT
+  # ENVIRONMENT
   - type: dnf
     install:
       packages:
@@ -108,7 +95,7 @@ modules:
         - qt5ct
         - qt6ct
 
-# FONTS
+  # FONTS
   - type: dnf
     install:
       packages:
@@ -131,7 +118,7 @@ modules:
         - terminus-fonts
         - terminus-fonts-console
 
-# GNOME EXTENSIONS (FROM DNF)
+  # GNOME EXTENSIONS (FROM DNF)
   - type: dnf
     install:
       packages:
@@ -143,7 +130,7 @@ modules:
         - gnome-shell-extension-gsconnect
         - gnome-shell-extension-just-perfection
 
-# GUI APPLICATIONS
+  # GUI APPLICATIONS
   - type: dnf
     install:
       packages:
@@ -174,7 +161,7 @@ modules:
         - simple-scan
         - snapshot
 
-# TERMINAL
+  # TERMINAL
   - type: dnf
     install:
       packages:
@@ -225,8 +212,10 @@ modules:
 
   - type: script
     scripts:
-    - gshell.sh
-    - post.sh
+      - gshell.sh
+    snippets:
+      - "rm -f /usr/lib64/gnome-software/plugins-*/libgs_plugin_fedora-pkgdb-collections.so"
+      - "plymouth-set-default-theme bgrt-mac-style"
 
   - type: dnf
     repos:
@@ -235,6 +224,7 @@ modules:
         - fedora
         - fedora-cisco-openh264
         - fedora-multimedia
+        - fedora-rar
         - terra
         - terra-mesa
         - updates
