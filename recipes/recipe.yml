@@ -32,7 +32,8 @@ modules:
   - type: script
     scripts:
       - dnf.sh
-
+    snippets:
+      - "dnf5 upgrade --allow-vendor-change --assumeyes --refresh"
   - type: dnf
     repos:
       disable:
@@ -213,10 +214,10 @@ modules:
 
   - type: script
     scripts:
-    - gshell.sh
+      - gshell.sh
     snippets:
-    - "rm -f /usr/lib64/gnome-software/plugins-*/libgs_plugin_fedora-pkgdb-collections.so"
-    - "plymouth-set-default-theme bgrt-mac-style"
+      - "rm -f /usr/lib64/gnome-software/plugins-*/libgs_plugin_fedora-pkgdb-collections.so"
+      - "plymouth-set-default-theme bgrt-mac-style"
 
   - type: dnf
     repos:

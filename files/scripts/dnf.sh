@@ -89,5 +89,3 @@ dnf5 config-manager setopt \
     updates-testing.priority=98 \
     updates-testing-debuginfo.priority=98 \
     updates-testing-source.priority=98
-
-dnf5 upgrade --allow-vendor-change
