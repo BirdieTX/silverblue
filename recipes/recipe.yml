@@ -29,6 +29,10 @@ modules:
       packages:
       - terra-release-mesa
 
+  - type: script
+    scripts:
+      - dnf.sh
+
   - type: dnf
     repos:
       disable:
@@ -40,7 +44,6 @@ modules:
         - fedora-nvidia
         - fedora-nvidia-source
         - fedora-nvidia-debug
-        - fedora-rar
         - fedora-rar-source
         - fedora-rar-debug
         - fedora-spotify
@@ -53,22 +56,6 @@ modules:
         - fedora-uld-source
         - fedora-uld-debug
 
-  - type: script
-    scripts:
-    - priority.sh
-
-# MESA
-  - type: dnf
-    replace:
-    - from-repo: terra-mesa
-      packages:
-      - mesa-dri-drivers
-      - mesa-filesystem
-      - mesa-libEGL
-      - mesa-libGL
-      - mesa-libgbm
-      - mesa-vulkan-drivers
-
   - type: dnf
     remove:
       auto-remove: true
@@ -80,7 +67,7 @@ modules:
       - gnome-shell-extension-places-menu
       - gnome-shell-extension-window-list
 
-# CLI TOOLS
+  # CLI TOOLS
   - type: dnf
     install:
       packages:
@@ -91,13 +78,14 @@ modules:
         - fastfetch
         - HandBrake-cli
         - mc
+        - rar
         - rust
         - signal-cli
         - vim-default-editor
         - yazi
         - yt-dlp
 
-# ENVIRONMENT
+  # ENVIRONMENT
   - type: dnf
     install:
       packages:
@@ -108,7 +96,7 @@ modules:
         - qt5ct
         - qt6ct
 
-# FONTS
+  # FONTS
   - type: dnf
     install:
       packages:
@@ -131,7 +119,7 @@ modules:
         - terminus-fonts
         - terminus-fonts-console
 
-# GNOME EXTENSIONS (FROM DNF)
+  # GNOME EXTENSIONS (FROM DNF)
   - type: dnf
     install:
       packages:
@@ -143,7 +131,7 @@ modules:
         - gnome-shell-extension-gsconnect
         - gnome-shell-extension-just-perfection
 
-# GUI APPLICATIONS
+  # GUI APPLICATIONS
   - type: dnf
     install:
       packages:
@@ -174,7 +162,7 @@ modules:
         - simple-scan
         - snapshot
 
-# TERMINAL
+  # TERMINAL
   - type: dnf
     install:
       packages:
@@ -226,7 +214,9 @@ modules:
   - type: script
     scripts:
     - gshell.sh
-    - post.sh
+    snippets:
+    - "rm -f /usr/lib64/gnome-software/plugins-*/libgs_plugin_fedora-pkgdb-collections.so"
+    - "plymouth-set-default-theme bgrt-mac-style"
 
   - type: dnf
     repos:
@@ -242,6 +232,7 @@ modules:
       copr:
         disable:
           - ublue-os/packages
+          - ublue-os/staging
 
   - type: gschema-overrides
     include:
