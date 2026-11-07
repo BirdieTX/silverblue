@@ -76,7 +76,6 @@ modules:
         - fastfetch
         - HandBrake-cli
         - mc
-        - nano
         - rar
         - rust
         - signal-cli
