@@ -19,12 +19,6 @@ modules:
       - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
       - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
       nonfree: negativo17
-    remove:
-      packages:
-      - firefox
-      - firefox-langpacks
-      - gnome-system-monitor
-      - nano-default-editor
     install:
       packages:
       - terra-release-mesa
@@ -33,12 +27,14 @@ modules:
     remove:
       auto-remove: true
       packages:
+        - firefox
         - gnome-shell-extension-apps-menu
         - gnome-shell-extension-background-logo
         - gnome-shell-extension-common
         - gnome-shell-extension-launch-new-instance
         - gnome-shell-extension-places-menu
         - gnome-shell-extension-window-list
+        - nano-default-editor
 
   - type: dnf
     repos:
@@ -80,6 +76,7 @@ modules:
         - fastfetch
         - HandBrake-cli
         - mc
+        - nano
         - rar
         - rust
         - signal-cli
@@ -95,6 +92,7 @@ modules:
         - kf6-kirigami-addons
         - papirus-icon-theme
         - plasma-breeze
+        - pulseaudio-utils
         - qt5ct
         - qt6ct
 
