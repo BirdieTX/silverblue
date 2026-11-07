@@ -29,11 +29,16 @@ modules:
       packages:
       - terra-release-mesa
 
-  - type: script
-    scripts:
-      - dnf.sh
-    snippets:
-      - "dnf5 upgrade --allow-vendor-change --assumeyes --refresh"
+  - type: dnf
+    remove:
+      auto-remove: true
+      packages:
+        - gnome-shell-extension-apps-menu
+        - gnome-shell-extension-background-logo
+        - gnome-shell-extension-common
+        - gnome-shell-extension-launch-new-instance
+        - gnome-shell-extension-places-menu
+        - gnome-shell-extension-window-list
 
   - type: dnf
     repos:
@@ -58,16 +63,11 @@ modules:
         - fedora-uld-source
         - fedora-uld-debug
 
-  - type: dnf
-    remove:
-      auto-remove: true
-      packages:
-      - gnome-shell-extension-apps-menu
-      - gnome-shell-extension-background-logo
-      - gnome-shell-extension-common
-      - gnome-shell-extension-launch-new-instance
-      - gnome-shell-extension-places-menu
-      - gnome-shell-extension-window-list
+  - type: script
+    scripts:
+      - dnf.sh
+    snippets:
+      - "dnf5 upgrade --allow-vendor-change --assumeyes --refresh"
 
   # CLI TOOLS
   - type: dnf
