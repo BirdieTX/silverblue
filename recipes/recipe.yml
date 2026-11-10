@@ -139,14 +139,22 @@ modules:
         - decibels
         - flatseal
         - g4music
+        - gnome-boxes
         - gnome-calculator
         - gnome-calendar
         - gnome-characters
         - gnome-clocks
+        - gnome-connections
         - gnome-font-viewer
         - gnome-logs
+        - gnome-maps
         - gnome-text-editor
         - gnome-weather
+
+  # GUI APPLICATIONS 2
+  - type: dnf
+    install:
+      packages:
         - libreoffice-base
         - libreoffice-calc
         - libreoffice-draw

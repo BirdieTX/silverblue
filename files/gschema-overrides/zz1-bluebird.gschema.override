@@ -85,7 +85,7 @@ dash-max-icon-size=56
 hot-keys=false
 
 [org.gnome.shell.extensions.just-perfection]
-animation=4
+animation=5
 max-displayed-search-results=40
 panel-in-overview=true
 workspace=true
