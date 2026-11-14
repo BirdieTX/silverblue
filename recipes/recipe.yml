@@ -15,12 +15,11 @@ modules:
     repos:
       copr:
       - ublue-os/packages
-      enable:
-      - fedora-multimedia
-      - fedora-rar
       files:
-      - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
       - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+      - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
+      - https://negativo17.org/repos/fedora-multimedia.repo
+      - https://negativo17.org/repos/fedora-rar.repo
     install:
       packages:
       - terra-release-mesa
