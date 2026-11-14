@@ -72,13 +72,13 @@ modules:
         - btop
         - cargo
         - cmatrix
-        - decibels
-        - eza
-        - fastfetch
 
   - type: dnf
     install:
       packages:
+        - decibels
+        - eza
+        - fastfetch
         - fish
         - flatseal
         - g4music
@@ -106,12 +106,8 @@ modules:
         - gnome-logs
         - gnome-maps
         - gnome-rounded-blur
-        - gnome-shell-extension-appindicator
-
-  - type: dnf
-    install:
-      packages:
         - gnome-shell-extension-blur-my-shell
+        - gnome-shell-extension-appindicator
         - gnome-shell-extension-caffeine
         - gnome-shell-extension-dash-to-dock
         - gnome-shell-extension-gsconnect
@@ -154,10 +150,6 @@ modules:
         - signal-cli
         - simple-scan
         - snapshot
-
-  - type: dnf
-    install:
-      packages:
         - starship
         - terminus-fonts
         - terminus-fonts-console
