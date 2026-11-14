@@ -18,7 +18,6 @@ modules:
       files:
       - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
       - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
-      nonfree: negativo17
     install:
       packages:
       - terra-release-mesa
@@ -39,25 +38,8 @@ modules:
   - type: dnf
     repos:
       disable:
-        - fedora-cdrtools
-        - fedora-cdrtools-source
-        - fedora-cdrtools-debug
-        - fedora-multimedia-source
-        - fedora-multimedia-debug
-        - fedora-nvidia
-        - fedora-nvidia-source
-        - fedora-nvidia-debug
-        - fedora-rar-source
-        - fedora-rar-debug
-        - fedora-spotify
-        - fedora-spotify-source
-        - fedora-spotify-debug
-        - fedora-steam
-        - fedora-steam-source
-        - fedora-steam-debug
-        - fedora-uld
-        - fedora-uld-source
-        - fedora-uld-debug
+        - fedora-multimedia
+        - fedora-rar
 
   - type: script
     scripts:
