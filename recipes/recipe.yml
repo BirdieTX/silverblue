@@ -15,6 +15,9 @@ modules:
     repos:
       copr:
       - ublue-os/packages
+      enable:
+      - fedora-multimedia
+      - fedora-rar
       files:
       - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
       - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
@@ -34,12 +37,6 @@ modules:
         - gnome-shell-extension-places-menu
         - gnome-shell-extension-window-list
         - nano-default-editor
-
-  - type: dnf
-    repos:
-      disable:
-        - fedora-multimedia
-        - fedora-rar
 
   - type: script
     scripts:
