@@ -20,11 +20,17 @@ modules:
       - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
       - https://negativo17.org/repos/fedora-multimedia.repo
       - https://negativo17.org/repos/fedora-rar.repo
-    install:
-      packages:
-      - terra-release-mesa
 
   - type: dnf
+    install:
+      packages:
+        - terra-release-mesa
+    repos:
+      disable:
+        - fedora-multimedia-debug
+        - fedora-multimedia-source
+        - fedora-rar-debug
+        - fedora-rar-source
     remove:
       auto-remove: true
       packages:
