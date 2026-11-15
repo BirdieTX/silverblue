@@ -69,13 +69,13 @@ modules:
         - bat
         - bibata-cursor-theme
         - brave-browser
-        - btop
-        - cargo
-        - cmatrix
 
   - type: dnf
     install:
       packages:
+        - btop
+        - cargo
+        - cmatrix
         - decibels
         - eza
         - fastfetch
