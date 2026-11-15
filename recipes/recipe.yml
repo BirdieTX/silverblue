@@ -119,11 +119,11 @@ modules:
         - jetbrains-mono-fonts-all
         - jetbrainsmono-nerd-fonts
         - kf6-kirigami-addons
+        - libreoffice-base
 
   - type: dnf
     install:
       packages:
-        - libreoffice-base
         - libreoffice-calc
         - libreoffice-draw
         - libreoffice-impress
