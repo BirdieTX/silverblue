@@ -1,16 +1,19 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: silverblue
-description: Custom Silverblue image for Birdie (and friends).
+description: Custom Silverblue image.
 base-image: ghcr.io/blue-build/base-images/fedora-silverblue
 image-version: 44
 
 modules:
+
+  # See /files/system
   - type: files
     files:
       - source: system
         destination: /
 
+  # Enables ublue packages, brave, terra and negativo17
   - type: dnf
     repos:
       copr:
@@ -21,6 +24,7 @@ modules:
       - https://negativo17.org/repos/fedora-multimedia.repo
       - https://negativo17.org/repos/fedora-rar.repo
 
+  # Addes repo for updates mesa drivers, removes debug and source repos, removes unneeded packages
   - type: dnf
     install:
       packages:
@@ -43,86 +47,58 @@ modules:
         - gnome-shell-extension-window-list
         - nano-default-editor
 
+  # Sets priority levels for dnf repos
   - type: script
     scripts:
       - dnf.sh
     snippets:
       - "dnf5 upgrade --allow-vendor-change --assumeyes --refresh"
 
-  # CLI TOOLS
+# The dnf modules are broken up into chunks in an attempt keep each layer under 1 GiB.Sometimes
+# it is not possible to keep each layer under 1 GiB if a package being installed is over 1 GiB.
+# In that case, those package get installed last, which can sometimes help lower the installation
+# size if some package dependencies are already installed in an earlier layer. Installation sizes
+# can vary between updates, so these should be checked and changed frequently if needed.
+
+  # 703 MiB
   - type: dnf
     install:
       packages:
+        - alacritty
+        - arimo-nerd-fonts
+        - baobab
         - bat
+        - bibata-cursor-theme
+        - brave-browser
         - btop
+
+  # 918 MiB
+  - type: dnf
+    install:
+      packages:
         - cargo
         - cmatrix
+        - decibels
         - eza
         - fastfetch
-        - HandBrake-cli
-        - mc
-        - rar
-        - rust
-        - signal-cli
-        - vim-default-editor
-        - yazi
-        - yt-dlp
-
-  # ENVIRONMENT
-  - type: dnf
-    install:
-      packages:
-        - bibata-cursor-theme
-        - kf6-kirigami-addons
-        - papirus-icon-theme
-        - plasma-breeze
-        - qt5ct
-        - qt6ct
-
-  # FONTS
-  - type: dnf
-    install:
-      packages:
-        - arimo-nerd-fonts
+        - fish
+        - flatseal
+        - g4music
         - google-arimo-fonts
         - google-droid-fonts-all
         - google-go-fonts
         - google-noto-fonts-all
         - google-noto-sans-hk-fonts
+
+  # 816 MiB
+  - type: dnf
+    install:
+      packages:
         - google-noto-serif-cjk-fonts
         - google-roboto-fonts
         - google-roboto-mono-fonts
         - google-roboto-slab-fonts
         - google-rubik-fonts
-        - jetbrains-mono-fonts-all
-        - jetbrainsmono-nerd-fonts
-        - material-icons-fonts
-        - rsms-inter-fonts
-        - rsms-inter-vf-fonts
-        - terminus-fonts
-        - terminus-fonts-console
-
-  # GNOME EXTENSIONS (FROM DNF)
-  - type: dnf
-    install:
-      packages:
-        - gnome-rounded-blur
-        - gnome-shell-extension-appindicator
-        - gnome-shell-extension-blur-my-shell
-        - gnome-shell-extension-caffeine
-        - gnome-shell-extension-dash-to-dock
-        - gnome-shell-extension-gsconnect
-        - gnome-shell-extension-just-perfection
-
-  # GUI APPLICATIONS
-  - type: dnf
-    install:
-      packages:
-        - baobab
-        - brave-browser
-        - decibels
-        - flatseal
-        - g4music
         - gnome-boxes
         - gnome-calculator
         - gnome-calendar
@@ -132,10 +108,21 @@ modules:
         - gnome-font-viewer
         - gnome-logs
         - gnome-maps
+        - gnome-rounded-blur
+        - gnome-shell-extension-blur-my-shell
+        - gnome-shell-extension-appindicator
+        - gnome-shell-extension-caffeine
+        - gnome-shell-extension-dash-to-dock
+        - gnome-shell-extension-gsconnect
+        - gnome-shell-extension-just-perfection
         - gnome-text-editor
         - gnome-weather
+        - HandBrake-cli
+        - jetbrains-mono-fonts-all
+        - jetbrainsmono-nerd-fonts
+        - kf6-kirigami-addons
 
-  # GUI APPLICATIONS 2
+  # 970 MiB
   - type: dnf
     install:
       packages:
@@ -146,26 +133,41 @@ modules:
         - libreoffice-math
         - libreoffice-writer
         - loupe
+        - material-icons-fonts
+        - mc
         - mission-center
         - papers
-        - setroubleshoot
-        - showtime
-        - simple-scan
-        - snapshot
+        - papirus-icon-theme
 
-  # TERMINAL
+  # 534 MiB
   - type: dnf
     install:
       packages:
-        - alacritty
-        - fish
+        - plasma-breeze
+        - qt5ct
+        - qt6ct
+        - rar
+        - rsms-inter-fonts
+        - rsms-inter-vf-fonts
+        - rust
+        - setroubleshoot
+        - showtime
+        - signal-cli
+        - simple-scan
+        - snapshot
         - starship
+        - terminus-fonts
+        - terminus-fonts-console
+        - vim-default-editor
+        - yazi
+        - yt-dlp
         - zsh
         - zsh-autocomplete
         - zsh-autosuggestions
         - zsh-html
         - zsh-syntax-highlighting
 
+  # These are either not available in any repositories or are not well-supported outside flathub.
   - type: default-flatpaks
     configurations:
       - notify: false
@@ -175,6 +177,7 @@ modules:
         - com.saivert.pwvucontrol
         - com.vixalien.sticky
 
+  # DING cannot be installed in this module. Needs to be installed by the end user.
   - type: gnome-extensions
     install:
       - Alphabetical App Grid
@@ -182,6 +185,8 @@ modules:
       - Logo Menu
       - Tiling Assistant
 
+  # NetworkManager-wait-online.service slows down boot time and is not needed for any of my own use cases.
+  # Other systemd modules are either unique to my images or are modified.
   - type: systemd
     system:
       disable:
@@ -202,6 +207,9 @@ modules:
     upgrade-interval: 7d
     upgrade-wait-after-boot: 30m
 
+  # Changes dconf settings that the gschema override module can't do. The first snippet removes the banner
+  # for upgrading Fedora versions and the plymouth theme is a modified bgrt-mac-style theme with the
+  # Fedora logo restored on it as it is in the spinner theme.
   - type: script
     scripts:
       - gshell.sh
@@ -209,6 +217,10 @@ modules:
       - "rm -f /usr/lib64/gnome-software/plugins-*/libgs_plugin_fedora-pkgdb-collections.so"
       - "plymouth-set-default-theme bgrt-mac-style"
 
+  # This keeps end users from layering packages which breaks automated updates. Package layering is
+  # still possible, but this forces the end user to enable the repositories needed to do it. Package
+  # layering is not recommended in general. Custom images should be used instead. Package layering
+  # should be considered for testing use cases only.
   - type: dnf
     repos:
       disable:
@@ -233,6 +245,8 @@ modules:
     install:
       - dconf-update-service
 
+  # This modifies files in /usr, like desktop files and gnome extensions. They are done after installation
+  # of those packages so that these can override them.
   - type: files
     files:
       - source: post
@@ -243,5 +257,6 @@ modules:
       PRETTY_NAME: "Fedora Linux 44 (Silverblue)"
       VERSION_CODENAME: "Bluebird"
 
+  # initramfs is needed to apply the plymouth theme (properly).
   - type: initramfs
   - type: signing
