@@ -60,7 +60,7 @@ modules:
 # size if some package dependencies are already installed in an earlier layer. Installation sizes
 # can vary between updates, so these should be checked and changed frequently if needed.
 
-  #
+  # 703 MiB
   - type: dnf
     install:
       packages:
@@ -87,16 +87,16 @@ modules:
         - google-droid-fonts-all
         - google-go-fonts
         - google-noto-fonts-all
+
+  - type: dnf
+    install:
+      packages:
         - google-noto-sans-hk-fonts
         - google-noto-serif-cjk-fonts
         - google-roboto-fonts
         - google-roboto-mono-fonts
         - google-roboto-slab-fonts
         - google-rubik-fonts
-
-  - type: dnf
-    install:
-      packages:
         - gnome-boxes
         - gnome-calculator
         - gnome-calendar
