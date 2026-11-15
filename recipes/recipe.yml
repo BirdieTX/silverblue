@@ -72,6 +72,7 @@ modules:
         - brave-browser
         - btop
 
+  # 918 MiB
   - type: dnf
     install:
       packages:
@@ -89,6 +90,7 @@ modules:
         - google-noto-fonts-all
         - google-noto-sans-hk-fonts
 
+  # 816 MiB
   - type: dnf
     install:
       packages:
@@ -120,6 +122,7 @@ modules:
         - jetbrainsmono-nerd-fonts
         - kf6-kirigami-addons
 
+  # 970 MiB
   - type: dnf
     install:
       packages:
@@ -135,11 +138,12 @@ modules:
         - mission-center
         - papers
         - papirus-icon-theme
-        - plasma-breeze
 
+  # 534 MiB
   - type: dnf
     install:
       packages:
+        - plasma-breeze
         - qt5ct
         - qt6ct
         - rar
