@@ -194,7 +194,7 @@ modules:
   # Other systemd modules are either unique to my images or are modified.
   - type: systemd
     system:
-      disable:
+      disabled:
         - NetworkManager-wait-online.service
       enabled:
         - bluebird-auto-update.timer
