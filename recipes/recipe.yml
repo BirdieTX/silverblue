@@ -103,11 +103,15 @@ modules:
         - gnome-calculator
         - gnome-calendar
         - gnome-characters
+        - gnome-chess
         - gnome-clocks
         - gnome-connections
         - gnome-font-viewer
         - gnome-logs
+        - gnome-mahjongg
         - gnome-maps
+        - gnome-mines
+        - gnome-nibbles
         - gnome-rounded-blur
         - gnome-shell-extension-blur-my-shell
         - gnome-shell-extension-appindicator
@@ -115,6 +119,7 @@ modules:
         - gnome-shell-extension-dash-to-dock
         - gnome-shell-extension-gsconnect
         - gnome-shell-extension-just-perfection
+        - gnome-sudoku
         - gnome-text-editor
         - gnome-weather
         - HandBrake-cli
