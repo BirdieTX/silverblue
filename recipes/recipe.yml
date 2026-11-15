@@ -90,7 +90,7 @@ modules:
         - google-noto-fonts-all
         - google-noto-sans-hk-fonts
 
-  # 816 MiB
+  # 833 MiB
   - type: dnf
     install:
       packages:
