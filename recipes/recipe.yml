@@ -71,30 +71,31 @@ modules:
         - bibata-cursor-theme
         - brave-browser
         - btop
+
+  - type: dnf
+    install:
+      packages:
+        - cargo
         - cmatrix
         - decibels
         - eza
         - fastfetch
         - fish
         - flatseal
-
-  - type: dnf
-    install:
-      packages:
         - g4music
         - google-arimo-fonts
         - google-droid-fonts-all
         - google-go-fonts
         - google-noto-fonts-all
+
+  - type: dnf
+    install:
+      packages:
         - google-noto-sans-hk-fonts
         - google-noto-serif-cjk-fonts
         - google-roboto-fonts
         - google-roboto-mono-fonts
         - google-roboto-slab-fonts
-
-  - type: dnf
-    install:
-      packages:
         - google-rubik-fonts
         - gnome-boxes
         - gnome-calculator
