@@ -167,7 +167,7 @@ modules:
         - zsh-html
         - zsh-syntax-highlighting
 
-  # Most of these are either not available in any repositories or are not well-supported outside flathub.
+  # These are either not available in any repositories or are not well-supported outside flathub.
   - type: default-flatpaks
     configurations:
       - notify: false
