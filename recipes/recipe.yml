@@ -119,11 +119,11 @@ modules:
         - jetbrains-mono-fonts-all
         - jetbrainsmono-nerd-fonts
         - kf6-kirigami-addons
-        - libreoffice-base
 
   - type: dnf
     install:
       packages:
+        - libreoffice-base
         - libreoffice-calc
         - libreoffice-draw
         - libreoffice-impress
@@ -135,11 +135,11 @@ modules:
         - mission-center
         - papers
         - papirus-icon-theme
+        - plasma-breeze
 
   - type: dnf
     install:
       packages:
-        - plasma-breeze
         - qt5ct
         - qt6ct
         - rar
