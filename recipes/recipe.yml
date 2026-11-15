@@ -60,6 +60,7 @@ modules:
 # size if some package dependencies are already installed in an earlier layer. Installation sizes
 # can vary between updates, so these should be checked and changed frequently if needed.
 
+  #
   - type: dnf
     install:
       packages:
@@ -69,18 +70,17 @@ modules:
         - bat
         - bibata-cursor-theme
         - brave-browser
-
-  - type: dnf
-    install:
-      packages:
         - btop
-        - cargo
         - cmatrix
         - decibels
         - eza
         - fastfetch
         - fish
         - flatseal
+
+  - type: dnf
+    install:
+      packages:
         - g4music
         - google-arimo-fonts
         - google-droid-fonts-all
