@@ -71,11 +71,11 @@ modules:
         - bibata-cursor-theme
         - brave-browser
         - btop
+        - cargo
 
   - type: dnf
     install:
       packages:
-        - cargo
         - cmatrix
         - decibels
         - eza
