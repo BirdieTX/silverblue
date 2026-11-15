@@ -87,13 +87,13 @@ modules:
         - google-droid-fonts-all
         - google-go-fonts
         - google-noto-fonts-all
+        - google-noto-sans-hk-fonts
+        - google-noto-serif-cjk-fonts
+        - google-roboto-fonts
 
   - type: dnf
     install:
       packages:
-        - google-noto-sans-hk-fonts
-        - google-noto-serif-cjk-fonts
-        - google-roboto-fonts
         - google-roboto-mono-fonts
         - google-roboto-slab-fonts
         - google-rubik-fonts
