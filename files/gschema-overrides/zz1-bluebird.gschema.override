@@ -5,7 +5,7 @@ clock-show-weekday=true
 color-scheme='prefer-dark'
 enable-hot-corners=false
 font-name='Arimo Nerd Font 12'
-icon-theme='Papirus-Dark'
+icon-theme='Papirus'
 monospace-font-name='JetBrainsMono Nerd Font 12'
 
 [org.gnome.desktop.wm.keybindings]

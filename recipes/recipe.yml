@@ -88,6 +88,10 @@ modules:
         - gnome-shell-extension-dash-to-dock
         - gnome-shell-extension-gsconnect
         - gnome-shell-extension-just-perfection
+
+  - type: dnf
+    install:
+      packages:
         - HandBrake-cli
         - jetbrains-mono-fonts-all
         - kf6-kirigami-addons
@@ -198,7 +202,6 @@ modules:
   - type: dnf
     repos:
       disable:
-        - brave-browser
         - fedora
         - fedora-cisco-openh264
         - fedora-multimedia
