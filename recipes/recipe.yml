@@ -19,7 +19,6 @@ modules:
       copr:
       - ublue-os/packages
       files:
-      - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
       - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
       - https://negativo17.org/repos/fedora-multimedia.repo
       - https://negativo17.org/repos/fedora-rar.repo
@@ -60,58 +59,28 @@ modules:
 # size if some package dependencies are already installed in an earlier layer. Installation sizes
 # can vary between updates, so these should be checked and changed frequently if needed.
 
-  # 703 MiB
   - type: dnf
     install:
       packages:
         - alacritty
-        - arimo-nerd-fonts
-        - baobab
         - bat
         - bibata-cursor-theme
-        - brave-browser
         - btop
-
-  # 918 MiB
-  - type: dnf
-    install:
-      packages:
         - cargo
         - cmatrix
-        - decibels
         - eza
         - fastfetch
         - fish
-        - flatseal
-        - g4music
         - google-arimo-fonts
         - google-droid-fonts-all
         - google-go-fonts
         - google-noto-fonts-all
         - google-noto-sans-hk-fonts
-
-  # 833 MiB
-  - type: dnf
-    install:
-      packages:
         - google-noto-serif-cjk-fonts
         - google-roboto-fonts
         - google-roboto-mono-fonts
         - google-roboto-slab-fonts
         - google-rubik-fonts
-        - gnome-boxes
-        - gnome-calculator
-        - gnome-calendar
-        - gnome-characters
-        - gnome-chess
-        - gnome-clocks
-        - gnome-connections
-        - gnome-font-viewer
-        - gnome-logs
-        - gnome-mahjongg
-        - gnome-maps
-        - gnome-mines
-        - gnome-nibbles
         - gnome-rounded-blur
         - gnome-shell-extension-blur-my-shell
         - gnome-shell-extension-appindicator
@@ -119,35 +88,12 @@ modules:
         - gnome-shell-extension-dash-to-dock
         - gnome-shell-extension-gsconnect
         - gnome-shell-extension-just-perfection
-        - gnome-sudoku
-        - gnome-text-editor
-        - gnome-weather
         - HandBrake-cli
         - jetbrains-mono-fonts-all
-        - jetbrainsmono-nerd-fonts
         - kf6-kirigami-addons
-
-  # 970 MiB
-  - type: dnf
-    install:
-      packages:
-        - libreoffice-base
-        - libreoffice-calc
-        - libreoffice-draw
-        - libreoffice-impress
-        - libreoffice-math
-        - libreoffice-writer
-        - loupe
         - material-icons-fonts
         - mc
-        - mission-center
-        - papers
         - papirus-icon-theme
-
-  # 534 MiB
-  - type: dnf
-    install:
-      packages:
         - plasma-breeze
         - qt5ct
         - qt6ct
@@ -156,11 +102,9 @@ modules:
         - rsms-inter-vf-fonts
         - rust
         - setroubleshoot
-        - showtime
         - signal-cli
-        - simple-scan
-        - snapshot
         - starship
+        - steam-devices
         - terminus-fonts
         - terminus-fonts-console
         - vim-default-editor
@@ -172,15 +116,39 @@ modules:
         - zsh-html
         - zsh-syntax-highlighting
 
+  - type: fonts
+    nerd-fonts:
+      - Arimo
+      - JetBrainsMono
+
   # These are either not available in any repositories or are not well-supported outside flathub.
   - type: default-flatpaks
     configurations:
       - notify: false
         scope: system
         install:
+        - com.brave.Browser
+        - com.github.neithern.g4music
+        - com.github.tchx84.Flatseal
         - com.mattjakeman.ExtensionManager
-        - com.saivert.pwvucontrol
         - com.vixalien.sticky
+        - io.missioncenter.MissionCenter
+        - org.gnome.baobab
+        - org.gnome.Calculator
+        - org.gnome.Calendar
+        - org.gnome.Characters
+        - org.gnome.clocks
+        - org.gnome.Decibels
+        - org.gnome.font-viewer
+        - org.gnome.Logs
+        - org.gnome.Loupe
+        - org.gnome.Papers
+        - org.gnome.Showtime
+        - org.gnome.SimpleScan
+        - org.gnome.Snapshot
+        - org.gnome.TextEditor
+        - org.gnome.Weather
+        - org.libreoffice.LibreOffice
 
   # DING cannot be installed in this module. Needs to be installed by the end user.
   - type: gnome-extensions
