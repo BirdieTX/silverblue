@@ -117,9 +117,10 @@ modules:
         - zsh-syntax-highlighting
 
   - type: fonts
-    nerd-fonts:
-      - Arimo
-      - JetBrainsMono
+    fonts:
+      nerd-fonts:
+        - Arimo
+        - JetBrainsMono
 
   # These are either not available in any repositories or are not well-supported outside flathub.
   - type: default-flatpaks
