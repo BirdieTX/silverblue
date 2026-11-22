@@ -122,8 +122,6 @@ modules:
         - com.github.neithern.g4music
         - com.github.tchx84.Flatseal
         - com.mattjakeman.ExtensionManager
-        - com.vixalien.sticky
-        - io.missioncenter.MissionCenter
         - org.gnome.baobab
         - org.gnome.Calculator
         - org.gnome.Calendar
