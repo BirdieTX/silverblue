@@ -59,6 +59,7 @@ modules:
 # size if some package dependencies are already installed in an earlier layer. Installation sizes
 # can vary between updates, so these should be checked and changed frequently if needed.
 
+  # 685 MiB
   - type: dnf
     install:
       packages:
@@ -79,6 +80,7 @@ modules:
         - gnome-shell-extension-gsconnect
         - gnome-shell-extension-just-perfection
 
+  # 741 MiB
   - type: dnf
     install:
       packages:
@@ -90,7 +92,6 @@ modules:
         - qt5ct
         - qt6ct
         - rar
-        - rust
         - setroubleshoot
         - signal-cli
         - starship
