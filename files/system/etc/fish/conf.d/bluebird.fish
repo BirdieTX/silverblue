@@ -5,7 +5,7 @@ if status is-interactive
 	set -g fish_greeting
 
 	# Run fastfetch configuration on shell startup
-	fastfetch -c /etc/fastfetch/xdg/term.jsonc
+	fastfetch -c /etc/xdg/fastfetch/term.jsonc
 end
 
 starship init fish | source

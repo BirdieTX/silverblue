@@ -40,7 +40,7 @@ setopt COMPLETE_IN_WORD
 # initialize starship
 # run fastfetch
 eval "$(starship init zsh)"
-fastfetch -c /etc/fastfetch/xdg/term.jsonc
+fastfetch -c /etc/xdg/fastfetch/term.jsonc
 
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
