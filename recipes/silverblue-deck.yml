@@ -1,0 +1,175 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+name: silverblue-deck-test
+description: Deck and HTPC image for BirdieTX.
+base-image: ghcr.io/birdietx/base
+image-version: br-testing-fp-44
+
+modules:
+
+  # See /files/silverblue-deck
+  - type: files
+    files:
+      - source: silverblue-deck
+        destination: /
+
+  # Enable repositories
+  - type: dnf
+    repos:
+      enable:
+        - fedora
+        - fedora-cisco-openh264
+        - fedora-multimedia
+        - fedora-rar
+        - terra
+        - terra-mesa
+        - updates
+        - updates-archive
+      copr:
+        enable:
+          - ublue-os/bazzite
+          - ublue-os/bazzite-multilib
+          - ublue-os/packages
+          - ublue-os/staging
+          - ycollet/audinux
+
+  - type: dnf
+    install:
+      packages:
+        - terra-release-extras
+
+  - type: script
+    scripts:
+      - deckrepo.sh
+
+  - type: dnf
+    install:
+      packages:
+        - acpica-tools
+        - acpid
+        - dmemcg-booster
+        - evtest
+        - gnome-shell-extension-bazzite-menu
+        - hid-replay
+        - powerbuttond
+        - python-vdf
+        - qt6-qtvirtualkeyboard
+        - scx-scheds
+        - scx-tools
+        - sddm
+        - socat
+        - vpower
+        - xorg-x11-server-Xvfb
+        - xrandr
+
+  - type: dnf
+    install:
+      packages:
+        - steam
+
+  - type: dnf
+    install:
+      packages:
+        - galileo-mura
+        - inputplumber
+        - jupiter-fan-control
+        - jupiter-hw-support-btrfs
+        - steam-notif-daemon
+        - steamdeck-dsp
+        - steamos-manager-powerstation
+        - terra-mangohud
+      exclude:
+        - mangohud
+
+  - type: script
+    scripts:
+      - deck.sh
+
+  - type: default-flatpaks
+    configurations:
+      - notify: false
+        scope: system
+        install:
+        - com.brave.Browser
+        - com.github.neithern.g4music
+        - com.github.tchx84.Flatseal
+        - com.mattjakeman.ExtensionManager
+        - org.gnome.baobab
+        - org.gnome.Calculator
+        - org.gnome.Calendar
+        - org.gnome.Characters
+        - org.gnome.clocks
+        - org.gnome.Decibels
+        - org.gnome.font-viewer
+        - org.gnome.Logs
+        - org.gnome.Loupe
+        - org.gnome.Showtime
+        - org.gnome.TextEditor
+
+  - type: systemd
+    system:
+      enabled:
+        - bluebird-autologin.service
+        - bluebird-hardware-setup.service
+        - dmemcg-booster-system.service
+        - inputplumber.service
+        - pipewire-workaround.service
+        - pipewire-sysconf.service
+        - sddm.service
+        - steamos-manager.service
+        - wireplumber-sysconf.service
+        - wireplumber-workaround.service
+      disabled:
+        - acpid.service
+        - gdm.service
+        - jupiter-biosupdate.service
+        - jupiter-controller-update.service
+        - jupiter-fan-control.service
+        - powerstation.service
+        - scx_loader.service
+        - vpower.service
+    user:
+      enabled:
+        - dmemcg-booster-user.service
+        - steamos-manager.service
+        - steamos-manager-configure-cecd.service
+        - steamos-manager-session-cleanup.service
+        - steamos-powerbuttond.service
+
+  # This keeps end users from layering packages which breaks automated updates. Package layering is
+  # still possible, but this forces the end user to enable the repositories needed to do it. Package
+  # layering is not recommended in general. Custom images should be used instead. Package layering
+  # should be considered for testing use cases only.
+  - type: dnf
+    repos:
+      disable:
+        - fedora
+        - fedora-cisco-openh264
+        - fedora-multimedia
+        - fedora-rar
+        - terra
+        - terra-extras
+        - terra-mesa
+        - updates
+        - updates-archive
+      copr:
+        disable:
+          - ublue-os/bazzite
+          - ublue-os/bazzite-multilib
+          - ublue-os/packages
+          - ublue-os/staging
+          - ycollet/audinux
+
+  # This modifies files in /usr, like desktop files and gnome extensions. They are done after installation
+  # of those packages so that these can override them.
+  - type: files
+    files:
+      - source: post-sd
+        destination: /
+
+  - type: os-release
+    properties:
+      PRETTY_NAME: "Fedora Linux 44 (Silverblue)"
+      VERSION_CODENAME: "Bluebird Deck"
+
+  - type: signing
