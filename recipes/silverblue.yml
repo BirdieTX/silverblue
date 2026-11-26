@@ -1,6 +1,6 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-name: silverblue-test
+name: silverblue
 description: Silverblue image for BirdieTX Silverblue.
 base-image: ghcr.io/birdietx/base
 image-version: latest

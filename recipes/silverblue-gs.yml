@@ -1,8 +1,8 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-name: silverblue-gs-test
+name: silverblue-gs
 description: Silverblue image for BirdieTX with native steam package and runtimes.
-base-image: ghcr.io/birdietx/silverblue-test
+base-image: ghcr.io/birdietx/silverblue
 image-version: latest
 
 modules:

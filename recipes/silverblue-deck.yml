@@ -1,6 +1,6 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-name: silverblue-deck-test
+name: silverblue-deck
 description: Deck and HTPC image for BirdieTX.
 base-image: ghcr.io/birdietx/base
 image-version: latest
