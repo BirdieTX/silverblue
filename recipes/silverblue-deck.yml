@@ -3,7 +3,7 @@
 name: silverblue-deck-test
 description: Deck and HTPC image for BirdieTX.
 base-image: ghcr.io/birdietx/base
-image-version: br-test-44
+image-version: latest
 
 modules:
 
