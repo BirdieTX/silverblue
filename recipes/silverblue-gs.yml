@@ -3,7 +3,7 @@
 name: silverblue-gs-test
 description: Silverblue image for BirdieTX with native steam package and runtimes.
 base-image: ghcr.io/birdietx/silverblue-test
-image-version: test-44
+image-version: br-test-44
 
 modules:
 
