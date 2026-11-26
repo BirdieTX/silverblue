@@ -1,0 +1,65 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+name: silverblue-gs
+description: Silverblue image for BirdieTX with native steam package and runtimes.
+base-image: ghcr.io/birdietx/silverblue
+image-version: latest
+
+modules:
+
+  # See /files/silverblue-gs
+  - type: files
+    files:
+      - source: silverblue-gs
+        destination: /
+
+  # Enable repositories
+  - type: dnf
+    repos:
+      enable:
+        - fedora
+        - fedora-cisco-openh264
+        - fedora-multimedia
+        - fedora-rar
+        - terra
+        - terra-mesa
+        - updates
+        - updates-archive
+      copr:
+        enable:
+          - ublue-os/packages
+
+  # 915 MiB
+  - type: dnf
+    install:
+      packages:
+        - gamescope
+        - scx-scheds
+        - scx-tools
+        - steam
+
+  # This keeps end users from layering packages which breaks automated updates. Package layering is
+  # still possible, but this forces the end user to enable the repositories needed to do it. Package
+  # layering is not recommended in general. Custom images should be used instead. Package layering
+  # should be considered for testing use cases only.
+  - type: dnf
+    repos:
+      disable:
+        - fedora
+        - fedora-cisco-openh264
+        - fedora-multimedia
+        - fedora-rar
+        - terra
+        - terra-mesa
+        - updates
+        - updates-archive
+      copr:
+        disable:
+          - ublue-os/packages
+
+  - type: os-release
+    properties:
+      PRETTY_NAME: "Fedora Linux 44 (Silverblue)"
+      VERSION_CODENAME: "Bluebird GS"
+
+  - type: signing

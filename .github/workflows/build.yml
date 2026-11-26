@@ -13,29 +13,56 @@ concurrency:
   # only run one build at a time
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
   cancel-in-progress: true
+
+permissions:
+  contents: read
+  packages: write
+  id-token: write
+
 jobs:
-  bluebuild:
-    name: Build Custom Image
+  base:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-      id-token: write
-    strategy:
-      fail-fast: false # stop GH from cancelling all matrix builds if one fails
-      matrix:
-        recipe:
-          # !! Add your recipes here
-          - recipe.yml
     steps:
-      # the build is fully handled by the reusable github action
-      - name: Build Custom Image
-        uses: blue-build/github-action@v1.14
+      - uses: blue-build/github-action@v1.14
         with:
-          recipe: ${{ matrix.recipe }}
+          recipe: base.yml
           cosign_private_key: ${{ secrets.SIGNING_SECRET }}
           registry_token: ${{ github.token }}
           pr_event_number: ${{ github.event.number }}
+          maximize_build_space: true
 
-          # enabled by default, disable if your image is small and you want faster builds
+  silverblue:
+    needs: base
+    runs-on: ubuntu-latest
+    steps:
+      - uses: blue-build/github-action@v1.14
+        with:
+          recipe: silverblue.yml
+          cosign_private_key: ${{ secrets.SIGNING_SECRET }}
+          registry_token: ${{ github.token }}
+          pr_event_number: ${{ github.event.number }}
+          maximize_build_space: true
+
+  silverblue-deck:
+    needs: base
+    runs-on: ubuntu-latest
+    steps:
+      - uses: blue-build/github-action@v1.14
+        with:
+          recipe: silverblue-deck.yml
+          cosign_private_key: ${{ secrets.SIGNING_SECRET }}
+          registry_token: ${{ github.token }}
+          pr_event_number: ${{ github.event.number }}
+          maximize_build_space: true
+
+  silverblue-gs:
+    needs: silverblue
+    runs-on: ubuntu-latest
+    steps:
+      - uses: blue-build/github-action@v1.14
+        with:
+          recipe: silverblue-gs.yml
+          cosign_private_key: ${{ secrets.SIGNING_SECRET }}
+          registry_token: ${{ github.token }}
+          pr_event_number: ${{ github.event.number }}
           maximize_build_space: true

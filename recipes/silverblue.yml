@@ -1,0 +1,43 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+name: silverblue
+description: Silverblue image for BirdieTX Silverblue.
+base-image: ghcr.io/birdietx/base
+image-version: latest
+
+modules:
+
+  # See /files/silverblue
+  - type: files
+    files:
+      - source: silverblue
+        destination: /
+
+  - type: default-flatpaks
+    configurations:
+      - notify: false
+        scope: system
+        install:
+        - org.gnome.Papers
+        - org.gnome.SimpleScan
+        - org.gnome.TextEditor
+        - org.gnome.Weather
+        - org.libreoffice.LibreOffice
+
+  - type: gnome-extensions
+    install:
+      - Logo Menu
+
+  # This modifies files in /usr, like desktop files and gnome extensions. They are done after installation
+  # of those packages so that these can override them.
+  - type: files
+    files:
+      - source: post-sb
+        destination: /
+
+  - type: os-release
+    properties:
+      PRETTY_NAME: "Fedora Linux 44 (Silverblue)"
+      VERSION_CODENAME: "Bluebird"
+
+  - type: signing
