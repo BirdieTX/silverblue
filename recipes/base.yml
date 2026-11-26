@@ -51,7 +51,7 @@ modules:
     scripts:
       - dnf.sh
     snippets:
-      - "dnf5 upgrade --allow-vendor-change --assumeyes --refresh"
+      - "dnf5 upgrade --allow-vendor-change --assumeyes --refresh --exclude='selinux-policy*'"
 
   # The dnf modules are broken up into chunks in an attempt keep each layer under 1 GiB.Sometimes
   # it is not possible to keep each layer under 1 GiB if a package being installed is over 1 GiB.
