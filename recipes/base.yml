@@ -59,6 +59,7 @@ modules:
   # size if some package dependencies are already installed in an earlier layer. Installation sizes
   # can vary between updates, so these should be checked and changed frequently if needed.
 
+  # 781 MiB
   - type: dnf
     install:
       packages:
@@ -81,6 +82,7 @@ modules:
         - HandBrake-cli
         - kf6-kirigami-addons
 
+  # 650 MiB
   - type: dnf
     install:
       packages:
