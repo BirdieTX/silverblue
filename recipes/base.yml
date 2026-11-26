@@ -200,6 +200,10 @@ modules:
     install:
       - dconf-update-service
 
+  - type: script
+    scripts:
+      - check-selinux-fcontext.sh
+
   # initramfs is needed to apply the plymouth theme (properly).
   - type: initramfs
   - type: signing

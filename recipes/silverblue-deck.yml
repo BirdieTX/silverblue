@@ -161,4 +161,8 @@ modules:
       PRETTY_NAME: "Fedora Linux 44 (Silverblue)"
       VERSION_CODENAME: "Bluebird Deck"
 
+  - type: script
+    scripts:
+      - check-selinux-fcontext.sh
+
   - type: signing
