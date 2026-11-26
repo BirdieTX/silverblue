@@ -29,6 +29,7 @@ modules:
         enable:
           - ublue-os/packages
 
+  # 915 MiB
   - type: dnf
     install:
       packages:

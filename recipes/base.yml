@@ -53,7 +53,12 @@ modules:
     snippets:
       - "dnf5 upgrade --allow-vendor-change --assumeyes --refresh"
 
-  # 685 MiB
+  # The dnf modules are broken up into chunks in an attempt keep each layer under 1 GiB.Sometimes
+  # it is not possible to keep each layer under 1 GiB if a package being installed is over 1 GiB.
+  # In that case, those package get installed last, which can sometimes help lower the installation
+  # size if some package dependencies are already installed in an earlier layer. Installation sizes
+  # can vary between updates, so these should be checked and changed frequently if needed.
+
   - type: dnf
     install:
       packages:
@@ -75,6 +80,10 @@ modules:
         - gnome-shell-extension-just-perfection
         - HandBrake-cli
         - kf6-kirigami-addons
+
+  - type: dnf
+    install:
+      packages:
         - mc
         - papirus-icon-theme
         - plasma-breeze
@@ -158,6 +167,28 @@ modules:
       copr:
         disable:
           - ublue-os/packages
+
+  - type: default-flatpaks
+    configurations:
+      - notify: false
+        scope: system
+        install:
+          - com.brave.Browser
+          - com.github.neithern.g4music
+          - com.github.tchx84.Flatseal
+          - com.mattjakeman.ExtensionManager
+          - org.gnome.baobab
+          - org.gnome.Calculator
+          - org.gnome.Calendar
+          - org.gnome.Characters
+          - org.gnome.clocks
+          - org.gnome.Decibels
+          - org.gnome.font-viewer
+          - org.gnome.Logs
+          - org.gnome.Loupe
+          - org.gnome.Showtime
+          - org.gnome.TextEditor
+          - org.gnome.Weather
 
   - type: gschema-overrides
     include:
